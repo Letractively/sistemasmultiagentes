@@ -18,7 +18,7 @@ public class Main {
 			// Creamos agentes de prueba, que hagan lo que tengan que hacer de momento...
 			
 			
-			String[] kw = {"a"};
+			String[] kw = {"universidad"};
 			
 			try {
 				

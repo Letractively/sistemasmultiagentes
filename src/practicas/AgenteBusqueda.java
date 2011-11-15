@@ -6,18 +6,22 @@ import java.net.URL;
 import java.util.regex.*;
 import java.util.ArrayList;
 
+
 public class AgenteBusqueda extends Thread {
 
 	public  String id;
 	private URL url;
 	private String[] keywords;
+	private int[] ocurrenciasKW;
 	private String codigo;
+	private String texto;
 	private ArrayList<String> vinculos;
 
 	// Expresiones Regulares:
 	
 	private static String REGEX_TAG_VINCULOS 	= "<a href[^>]*>";
-	private static String REGEX_VINCULOS 		= "\"https://[^\"]*\"";
+	private static String REGEX_VINCULOS 		= "http(s?)://[^\"']*";
+	private static String REGEX_TEXTO			= "<[^>]*>";
 	
 	
 	/**
@@ -34,8 +38,10 @@ public class AgenteBusqueda extends Thread {
 		keywords 	= kw;
 		
 		// Solo incialización:
-		codigo 		= "";
-		vinculos	= new ArrayList<String>();
+		codigo 			= "";
+		texto 			= "";
+		ocurrenciasKW	= new int[keywords.length];
+		vinculos		= new ArrayList<String>();
 	}
 	
 	
@@ -66,7 +72,7 @@ public class AgenteBusqueda extends Thread {
 	private void buscaVinculos() {
 		
 		// Primero extraemos las tags que se corresponden con vínculos:
-		Pattern patTags = Pattern.compile(REGEX_TAG_VINCULOS);
+		Pattern patTags = Pattern.compile(REGEX_TAG_VINCULOS, Pattern.CASE_INSENSITIVE);
 		Matcher matTags = patTags.matcher(codigo);
 		
 		// Las concatenamos en esta cadena:
@@ -77,11 +83,41 @@ public class AgenteBusqueda extends Thread {
 		}
 		
 		// Ahora extraemos el vínculo en sí de cada tag.
-		Pattern patVinculos = Pattern.compile(REGEX_VINCULOS);
+		Pattern patVinculos = Pattern.compile(REGEX_VINCULOS, Pattern.CASE_INSENSITIVE);
 		Matcher matVinculos = patVinculos.matcher(tags);
 				
 		while (matVinculos.find()) {
 			vinculos.add(matVinculos.group());
+		}
+	}
+	
+	
+	/**
+	 * Extrae el texto a partir del código de la URL
+	 */
+	private void extraeTexto() {
+		
+		texto = codigo.replaceAll(REGEX_TEXTO, "");
+	}
+	
+	
+	/**
+	 * Busca ocurrencias en el texto para cada keyword.
+	 * ALmacena el resultado en el vector de ocurrencias.
+	 */
+	private void buscaKeywords() {
+		
+		for (int i = 0; i < keywords.length; i++) {
+
+			Pattern pat = Pattern.compile(keywords[i], Pattern.CASE_INSENSITIVE);
+
+			Matcher mat = pat.matcher(texto);
+			
+			ocurrenciasKW[i] = 0;
+			
+			while (mat.find())
+				ocurrenciasKW[i]++;
+			
 		}
 	}
 	
@@ -99,6 +135,16 @@ public class AgenteBusqueda extends Thread {
 		cogeCodigo();
 		System.out.println(codigo);
 		
+		System.out.println("\n\n");
+		
+		System.out.println(String.format("Agente %s: Analizando texto.", id));
+		extraeTexto();
+		buscaKeywords();
+		System.out.println(String.format("Agente %s: Relación de ocurrencias:", id));
+		for (int i = 0; i < keywords.length; i++)
+			System.out.println(String.format("%s - %d ocurrencias.", keywords[i], ocurrenciasKW[i]));
+		
+		System.out.println("\n\n");
 		
 		System.out.println(String.format("Agente %s: Buscando los vinculos.", id));
 		buscaVinculos();
@@ -107,6 +153,7 @@ public class AgenteBusqueda extends Thread {
 			System.out.println(s);
 		}
 		
+		System.out.println("\n\n");
 		
 		System.out.println(String.format("Agente %s: He terminado, me autodestruyo.", id));
 	}
