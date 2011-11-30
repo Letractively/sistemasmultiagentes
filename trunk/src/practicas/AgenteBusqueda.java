@@ -1,13 +1,17 @@
 package practicas;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.regex.*;
 import java.util.ArrayList;
 
+import comunicacion.LogFile;
 
-public class AgenteBusqueda extends Thread {
+
+public class AgenteBusqueda extends Thread implements Agente {
 
 	public  String id;
 	private URL url;
@@ -16,12 +20,22 @@ public class AgenteBusqueda extends Thread {
 	private String codigo;
 	private String texto;
 	private ArrayList<String> vinculos;
-
+	private LogFile out;
+	
+	private int hijosActivos;
+	
+	private Agente padre;
+	private ArrayList<AgenteBusqueda> hijos;
+	
 	// Expresiones Regulares:
 	
 	private static String REGEX_TAG_VINCULOS 	= "<a href[^>]*>";
-	private static String REGEX_VINCULOS 		= "http(s?)://[^\"']*";
+	private static String REGEX_VINCULOS 		= "\"http(s?)://[^\"']*\"";
 	private static String REGEX_TEXTO			= "<[^>]*>";
+	
+	// Log:
+	
+	private static String log_file				= "logSMA";
 	
 	
 	/**
@@ -30,38 +44,39 @@ public class AgenteBusqueda extends Thread {
 	 * @param u 	- URL a analizar.
 	 * @param kw	- Keywords.
 	 */
-	public AgenteBusqueda(String i, URL u, String[] kw) {
+	public AgenteBusqueda(Agente p, LogFile m, String i, URL u, String[] kw) {
 		
 		// Parametros:
 		id			= i;
 		url 		= u;
 		keywords 	= kw;
+		out			= m;
+		padre		= p;
 		
 		// Solo incialización:
 		codigo 			= "";
 		texto 			= "";
 		ocurrenciasKW	= new int[keywords.length];
 		vinculos		= new ArrayList<String>();
+		hijos			= new ArrayList<AgenteBusqueda>();
+		
 	}
 	
 	
 	/**
 	 * Extrae el código de la URL dada y lo guarda en un String.
+	 * @throws IOException 
 	 */
-	private void cogeCodigo() {
-		try {
+	private void cogeCodigo() throws IOException {
+
+		BufferedReader in;
+		in = new BufferedReader(new InputStreamReader(url.openStream()));
 			
-			BufferedReader in;
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
-				
-			while (in.ready()) {
-				
-				codigo += in.readLine();
-			}
+		while (in.ready()) {
 			
-		} catch (IOException e) {
-			e.printStackTrace();
+			codigo += in.readLine();
 		}
+
 	}
 	
 	/**
@@ -87,7 +102,8 @@ public class AgenteBusqueda extends Thread {
 		Matcher matVinculos = patVinculos.matcher(tags);
 				
 		while (matVinculos.find()) {
-			vinculos.add(matVinculos.group());
+			String v = matVinculos.group();
+			vinculos.add(v.substring(1,v.length()-1));
 		}
 	}
 	
@@ -127,35 +143,97 @@ public class AgenteBusqueda extends Thread {
 	 */
 	@Override
 	public void run() {
-		
-		System.out.println(String.format("Agente %s: He sido creado.", id));
-		
-		
-		System.out.println(String.format("Agente %s: Adquiriendo código de %s.", id, url.toExternalForm()));
-		cogeCodigo();
-		System.out.println(codigo);
-		
-		System.out.println("\n\n");
-		
-		System.out.println(String.format("Agente %s: Analizando texto.", id));
-		extraeTexto();
-		buscaKeywords();
-		System.out.println(String.format("Agente %s: Relación de ocurrencias:", id));
-		for (int i = 0; i < keywords.length; i++)
-			System.out.println(String.format("%s - %d ocurrencias.", keywords[i], ocurrenciasKW[i]));
-		
-		System.out.println("\n\n");
-		
-		System.out.println(String.format("Agente %s: Buscando los vinculos.", id));
-		buscaVinculos();
-		System.out.println(String.format("Agente %s: He encontrado los vínculos:", id));
-		for (String s:vinculos) {
-			System.out.println(s);
-		}
-		
-		System.out.println("\n\n");
-		
-		System.out.println(String.format("Agente %s: He terminado, me autodestruyo.", id));
+			out.escribir(String.format("\n[1](Creacion)\t Agente %s:\t He sido creado.", id));
+						
+			out.escribir(String.format("\n[2](URL)\t Agente %s:\t Adquiriendo código de %s.", id, url.toExternalForm()));
+			
+			try {
+				cogeCodigo();
+			
+			
+			extraeTexto();
+			buscaKeywords();
+			
+			// Mostrar ocurrencias:
+			String ocu = String.format("\n[3](Ocurr)\t Agente %s: \t found: ", id);			
+			for (int i = 0; i < keywords.length; i++)
+				 ocu += String.format("%s(%d), ", keywords[i], ocurrenciasKW[i]);
+			out.escribir(ocu);
+			
+			
+			buscaVinculos();
+
+			
+			/////////////////////////////////////////////////////////////////////////////////////////////////
+			//CLONACION DEL AGENTE:
+			
+			
+			// TEMPORAL: Una profundidad inicial:
+			if (id.split("-").length < 3) {
+				
+				
+				out.escribir(String.format("\n[4](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, vinculos.size()));
+				// Clonarse:
+				int i = 1;
+				for (String v:vinculos) {
+					
+					try {
+						
+						hijos.add(new AgenteBusqueda(this, out, id+"-"+String.valueOf(i), new URL(v), keywords));
+						i++;
+						
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				for (AgenteBusqueda a:hijos)
+					a.start();
+						
+				// Nos quedaremos activos hasta que nuestros hijos hayan terminado, para poder pasar mensajes:
+				hijosActivos = hijos.size();
+				// Padamos el control a un monitor interno:
+				seguir();
+			}
+					
+			
+			} catch (IOException e1) {
+				out.escribir(String.format("\n[2](URL)\t Agente %s:\t URL no disponible.", id));
+			}	
+			
+			
+			// Terminamos:
+			out.escribir(String.format("\n[5](Muerte)\t Agente %s:\t He terminado, chao.", id));
+		    padre.mensaje("Fin");
 	}
 
+	
+	/**
+	 * Se espera a que todos sus hijos hayan terminado y mientras queda a la espera:
+	 */
+	public synchronized void seguir() {
+		while (hijosActivos != 0) {
+			try {
+				wait();	
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	// Con este método recibimos los mensajes:
+	@Override
+	public synchronized void mensaje(String msg) {
+		
+		// Una forma trivial es mandar un código y procesarlo:
+		
+		if (msg.equals("Fin")) {
+			hijosActivos--;			
+			notify();
+		}
+		
+		//... seguirían más mensajes
+	}
 }
