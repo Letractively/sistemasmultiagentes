@@ -7,7 +7,9 @@ import java.net.URL;
 
 import javax.swing.*;
 
-public class AgenteInterfaz extends JFrame implements ActionListener {
+import comunicacion.LogFile;
+
+public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 
 	private JLabel urlLabel;
 	private JTextField campoUrlText;
@@ -15,16 +17,24 @@ public class AgenteInterfaz extends JFrame implements ActionListener {
 	private JLabel keywordLabel;
 	private JTextField campoKeywordText;
 
+	private JLabel actividadLabel;
+	
 	private JButton empezarButtom;
 	private JButton salirButtom;
 
-	public AgenteInterfaz() {
+	
+	// temporal: 
+	private LogFile log;
+	
+	public AgenteInterfaz(LogFile log) {
 		super("Practicas Multiagente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 300);
 		//setResizable(false);// Para fijar la pantalla.
 		definirVentana();
 		setVisible(true);
+		
+		this.log = log;
 	}
 
 	public void definirVentana() {
@@ -42,6 +52,9 @@ public class AgenteInterfaz extends JFrame implements ActionListener {
 		campoKeywordText = new JTextField();
 		generarRestriccion(campoKeywordText, 1, 2, 2, 3, 0, 0);	
 
+		actividadLabel = new JLabel("Actividad nula");
+		generarRestriccion(actividadLabel, 0, 6, 1, 5, 0, 0);
+		
 		empezarButtom = new JButton("Comenzar");
 		generarRestriccion(empezarButtom, 1, 5, 1, 1, 0, 0);			
 		
@@ -53,7 +66,7 @@ public class AgenteInterfaz extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Método para generar una restricción para el layout.
+	 * Mï¿½todo para generar una restricciï¿½n para el layout.
 	 * @param comp
 	 * @param gridx
 	 * @param gridy
@@ -75,17 +88,26 @@ public class AgenteInterfaz extends JFrame implements ActionListener {
 		add(comp,gbc);
 		return gbc;
 	}
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == empezarButtom) {
 			AgenteBusqueda agent;
 			try {
+				
 				String pruebaURL = campoUrlText.getText();
+				
 				if (pruebaURL.startsWith("www"))
 					pruebaURL = "http://" + pruebaURL;
-				agent = new AgenteBusqueda("1", new URL(pruebaURL), campoKeywordText.getText().split(","));
+				
+				agent = new AgenteBusqueda(this, log, "1", new URL(pruebaURL), campoKeywordText.getText().split(","));
 				agent.start();
+				
+				actividadLabel.setText("Agentes en activo");
+			
+				
 			} catch (MalformedURLException e1) {
 				// TODO: mostrar error
 			}
@@ -94,5 +116,14 @@ public class AgenteInterfaz extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 
+	}
+	
+
+	
+
+	@Override
+	public void mensaje(String msg) {
+		actividadLabel.setText("Actividad finalizada");
+		log.cerrar();
 	}
 }
