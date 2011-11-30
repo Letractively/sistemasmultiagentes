@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.regex.*;
 import java.util.ArrayList;
 
-import comunicacion.LogFile;
+import comunicacion.*;
 
 
 public class AgenteBusqueda extends Thread implements Agente {
@@ -20,7 +20,9 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private String codigo;
 	private String texto;
 	private ArrayList<String> vinculos;
-	private LogFile out;
+	
+	private LogFile log;
+	private Pizarra pizarra;
 	
 	private int hijosActivos;
 	
@@ -33,10 +35,6 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private static String REGEX_VINCULOS 		= "\"http(s?)://[^\"']*\"";
 	private static String REGEX_TEXTO			= "<[^>]*>";
 	
-	// Log:
-	
-	private static String log_file				= "logSMA";
-	
 	
 	/**
 	 * 
@@ -44,13 +42,14 @@ public class AgenteBusqueda extends Thread implements Agente {
 	 * @param u 	- URL a analizar.
 	 * @param kw	- Keywords.
 	 */
-	public AgenteBusqueda(Agente p, LogFile m, String i, URL u, String[] kw) {
+	public AgenteBusqueda(Agente p, LogFile m, Pizarra pi, String i, URL u, String[] kw) {
 		
 		// Parametros:
 		id			= i;
 		url 		= u;
 		keywords 	= kw;
-		out			= m;
+		log			= m;
+		pizarra 	= pi;
 		padre		= p;
 		
 		// Solo incialización:
@@ -138,14 +137,18 @@ public class AgenteBusqueda extends Thread implements Agente {
 	}
 	
 	
+	
+	
+	
+	
 	/**
 	 * Lanza el hilo...
 	 */
 	@Override
 	public void run() {
-			out.escribir(String.format("\n[1](Creacion)\t Agente %s:\t He sido creado.", id));
+			log.escribir(String.format("\n[1](Creacion)\t Agente %s:\t He sido creado.", id));
 						
-			out.escribir(String.format("\n[2](URL)\t Agente %s:\t Adquiriendo código de %s.", id, url.toExternalForm()));
+			log.escribir(String.format("\n[2](URL)\t Agente %s:\t Adquiriendo código de %s.", id, url.toExternalForm()));
 			
 			try {
 				cogeCodigo();
@@ -158,7 +161,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 			String ocu = String.format("\n[3](Ocurr)\t Agente %s: \t found: ", id);			
 			for (int i = 0; i < keywords.length; i++)
 				 ocu += String.format("%s(%d), ", keywords[i], ocurrenciasKW[i]);
-			out.escribir(ocu);
+			log.escribir(ocu);
 			
 			
 			buscaVinculos();
@@ -172,19 +175,27 @@ public class AgenteBusqueda extends Thread implements Agente {
 			if (id.split("-").length < 3) {
 				
 				
-				out.escribir(String.format("\n[4](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, vinculos.size()));
+				log.escribir(String.format("\n[4](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, vinculos.size()));
 				// Clonarse:
 				int i = 1;
 				for (String v:vinculos) {
 					
-					try {
+					// Solo si el vínculo no ha sido antes visitado:
+					if (pizarra.quieroVisitar(v)) {
+						try {
+							
+							hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
+							i++;
+							
+						} catch (MalformedURLException e) {
+							e.printStackTrace();
+						}
 						
-						hijos.add(new AgenteBusqueda(this, out, id+"-"+String.valueOf(i), new URL(v), keywords));
-						i++;
-						
-					} catch (MalformedURLException e) {
-						e.printStackTrace();
 					}
+				}
+				
+				if (i-1 != vinculos.size()) {
+					log.escribir(String.format("\n[5](Visitados)\t Agente %s:\t Solo me clono %d veces, %d vínculos ya estaban visitados.", id, vinculos.size(), vinculos.size()-i+1));
 				}
 				
 				for (AgenteBusqueda a:hijos)
@@ -198,15 +209,20 @@ public class AgenteBusqueda extends Thread implements Agente {
 					
 			
 			} catch (IOException e1) {
-				out.escribir(String.format("\n[2](URL)\t Agente %s:\t URL no disponible.", id));
+				log.escribir(String.format("\n[2](URL)\t Agente %s:\t URL no disponible.", id));
 			}	
 			
 			
 			// Terminamos:
-			out.escribir(String.format("\n[5](Muerte)\t Agente %s:\t He terminado, chao.", id));
+			log.escribir(String.format("\n[6](Muerte)\t Agente %s:\t He terminado, chao.", id));
 		    padre.mensaje("Fin");
 	}
 
+	
+	
+	/**
+	 * METODOS REFERENTES A COMUNICACIÓN:
+	 */
 	
 	/**
 	 * Se espera a que todos sus hijos hayan terminado y mientras queda a la espera:

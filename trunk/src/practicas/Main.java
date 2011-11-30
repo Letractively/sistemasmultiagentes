@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import comunicacion.LogFile;
+import comunicacion.Pizarra;
 
 
 
@@ -19,11 +20,12 @@ public class Main {
 		
 			// Monitores:
 		
-			LogFile log = new LogFile("SMAlog");
+			LogFile log 		= new LogFile("SMAlog");
+			Pizarra pizarra		= new Pizarra();
 			
 			
 			// El agente interfaz instancia de momento al de busqueda
-			AgenteInterfaz interfaz = new AgenteInterfaz(log);
+			AgenteInterfaz interfaz = new AgenteInterfaz(log, pizarra);
 			
 
 	}

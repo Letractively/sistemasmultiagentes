@@ -5,9 +5,12 @@ import java.awt.event.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.*;
 
-import comunicacion.LogFile;
+import comunicacion.*;
 
 public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 
@@ -23,10 +26,16 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	private JButton salirButtom;
 
 	
+	// Variables:
+	private boolean actividad	= false;
+	private int agentesActivos  = 0;
+	private int maxAgentes		= 0;
+	
 	// temporal: 
 	private LogFile log;
+	private Pizarra pizarra;
 	
-	public AgenteInterfaz(LogFile log) {
+	public AgenteInterfaz(LogFile log, Pizarra pizarra) {
 		super("Practicas Multiagente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 300);
@@ -34,8 +43,22 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 		definirVentana();
 		setVisible(true);
 		
-		this.log = log;
-	}
+		this.log 		= log;
+		this.pizarra 	= pizarra;
+		
+		// PAra actualizar el número de agentes:
+		Timer timer = new Timer();        
+        timer.schedule(new TimerTask () {
+        	@Override
+        	public void run() {
+        		if (actividad) {
+	        		agentesActivos = Thread.activeCount() - 5;
+	        		actividadLabel.setText(String.format("Agentes en activo x %s", agentesActivos));
+        		}
+        	}
+        }, 0, 60 * 10);
+    }
+
 
 	public void definirVentana() {
 		
@@ -94,25 +117,32 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == empezarButtom) {
-			AgenteBusqueda agent;
-			try {
+			if (!actividad) {
+				actividad = true;
+				log.reiniciar();
 				
-				String pruebaURL = campoUrlText.getText();
+				AgenteBusqueda agent;
 				
-				if (pruebaURL.startsWith("www"))
-					pruebaURL = "http://" + pruebaURL;
+				try {
+					
+					String pruebaURL = campoUrlText.getText();
+					
+					if (pruebaURL.startsWith("www"))
+						pruebaURL = "http://" + pruebaURL;
+					
+					agent = new AgenteBusqueda(this, log, pizarra, "p", new URL(pruebaURL), campoKeywordText.getText().split(","));
+					agent.start();
+					
+					actividadLabel.setText(String.format("Agentes en activo x %s", agentesActivos));
 				
-				agent = new AgenteBusqueda(this, log, "1", new URL(pruebaURL), campoKeywordText.getText().split(","));
-				agent.start();
-				
-				actividadLabel.setText("Agentes en activo");
-			
-				
-			} catch (MalformedURLException e1) {
-				// TODO: mostrar error
+					
+				} catch (MalformedURLException e1) {
+					// TODO: mostrar error
+				}
 			}
-
+			
 		} else if (e.getSource() == salirButtom) {
+			log.cerrar();
 			System.exit(0);
 		}
 
@@ -123,6 +153,8 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 
 	@Override
 	public void mensaje(String msg) {
+		System.out.println("Fiiiiiiiin");
+		actividad = false;
 		actividadLabel.setText("Actividad finalizada");
 		log.cerrar();
 	}
