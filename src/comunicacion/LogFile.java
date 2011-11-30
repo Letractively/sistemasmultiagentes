@@ -7,10 +7,11 @@ import java.io.IOException;
 public class LogFile {
 
 	private BufferedWriter out;
+	private String path;
 	
-	
-	public LogFile(String path){
-		
+	public LogFile(String p){
+		 path = p;
+		 
 		 try {
 			 
 			out = new BufferedWriter(new FileWriter(path));
@@ -33,6 +34,19 @@ public class LogFile {
 			e.printStackTrace();
 		}
 	}
+	public void reiniciar() {
+		
+		cerrar();
+		try {
+			 
+			out = new BufferedWriter(new FileWriter(path));
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	
 	
 	public void cerrar() {
 		try {
