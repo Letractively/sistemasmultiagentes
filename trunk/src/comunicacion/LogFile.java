@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import practicas.AgenteInterfaz;
+
 public class LogFile {
 
 	private BufferedWriter out;
@@ -28,7 +30,7 @@ public class LogFile {
 		try {
 			
 			out.write(s);
-			
+			AgenteInterfaz.escribirTextArea(s);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
