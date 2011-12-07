@@ -1,4 +1,5 @@
 package practicas;
+import comunicacion.*;
 
 /**
  * Interfaz que nos permitirá referirnos a cualquier tipo de agente como "agente" en sí.
@@ -8,5 +9,5 @@ package practicas;
  */
 public interface Agente {
 
-		public void mensaje(String msg);
+		public void mensaje(Mensaje msg);
 }
