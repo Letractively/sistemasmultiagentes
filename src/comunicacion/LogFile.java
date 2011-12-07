@@ -53,7 +53,6 @@ public class LogFile {
 		try {
 			
 			out.write(s);
-			AgenteInterfaz.escribirTextArea(s);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

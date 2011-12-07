@@ -43,6 +43,10 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private static String REGEX_VINCULOS 		= "\"http(s?)://[^\"']*\"";
 	private static String REGEX_TEXTO			= "<[^>]*>";
 	
+	// Solo temporal. Para controlar la profundidad:
+	private static int    TEMP_PROFUNDIDAD_MAXIMA = 2;
+	private static int    TEMP_MINIMO_OCURRENCIAS = 2;
+	
 	
 	/**
 	 * Constructor para incialziar una gente:
@@ -174,10 +178,16 @@ public class AgenteBusqueda extends Thread implements Agente {
 				// Buscamos las keywords:
 				buscaKeywords();
 				
-				// Mostrar ocurrencias:
+				// Analizamos ocurrencias:
+				// Primero un mensaje para mostrarlas:
 				String ocu = String.format("\n[3](Ocurr)\t Agente %s: \t found: ", id);			
-				for (int i = 0; i < keywords.length; i++)
+				for (int i = 0; i < keywords.length; i++) {				 
 					 ocu += String.format("%s(%d), ", keywords[i], ocurrenciasKW[i]);
+				
+					 // Si las ocurrencias exceden el mínimo, debemos comunicarselo a nuestro padre:
+					 if (ocurrenciasKW[i] >= TEMP_MINIMO_OCURRENCIAS)
+						 padre.mensaje(new Mensaje("sol", new String[]{String.valueOf(keywords[i]), String.valueOf(ocurrenciasKW[i]), url.toExternalForm()}));
+				}
 				log.escribir(ocu);
 				
 				// Extraemos los vínculos:
@@ -189,7 +199,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 				
 				
 				// TEMPORAL: Una profundidad inicial para la búsqeuda:
-				if (id.split("-").length < 3) {
+				if (id.split("-").length < TEMP_PROFUNDIDAD_MAXIMA) {
 					
 					
 					log.escribir(String.format("\n[4](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, vinculos.size()));
@@ -238,7 +248,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 			
 			// Llegados a este punto el agente muere, lo escribe en el log y antes envia un mensaje a su padre para comunicarselo:
 			log.escribir(String.format("\n[6](Muerte)\t Agente %s:\t He terminado, chao.", id));
-		    padre.mensaje("Fin");
+		    padre.mensaje(new Mensaje("fin", null));
 	}
 
 	
@@ -267,15 +277,17 @@ public class AgenteBusqueda extends Thread implements Agente {
 	 * 
 	 */
 	@Override
-	public synchronized void mensaje(String msg) {
+	public synchronized void mensaje(Mensaje msg) {
 		
 		
-		// Una forma trivial es mandar un código y procesarlo:
-		if (msg.equals("Fin")) {
+		// comprobamos que el código del mensaje nos sea reconocido, en caso contrario lo ignoramos:
+		if (msg.codigo.equals("fin")) {
 			hijosActivos--;			
 			notify();
+			
+		} else if (msg.codigo.equals("sol")) {
+			padre.mensaje(msg);
 		}
-		
-		//... seguirían más mensajes
+
 	}
 }

@@ -214,10 +214,19 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	 * 
 	 */
 	@Override
-	public void mensaje(String msg) {
-		System.out.println("Fiiiiiiiin");
-		actividad = false;
-		actividadLabel.setText("Actividad finalizada");
-		log.cerrar();
+	public void mensaje(Mensaje msg) {
+		
+		// comprobamos que el código del mensaje nos sea reconocido, en caso contrario lo ignoramos:
+		if (msg.codigo.equals("fin")) {
+			System.out.println("Fiiiiiiiin");
+			actividad = false;
+			actividadLabel.setText("Actividad finalizada");
+			log.cerrar();	
+			
+		} else if (msg.codigo.equals("sol")) {
+			escribirTextArea(String.format("%s encontrada %s veces en la URL %s\n", msg.parametros[0], msg.parametros[1], msg.parametros[2]));
+		}
+
+		
 	}
 }
