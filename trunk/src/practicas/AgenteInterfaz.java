@@ -12,6 +12,16 @@ import javax.swing.*;
 
 import comunicacion.*;
 
+/**
+ * Agente de interfaz del sistema. 
+ * Muestra una interfaz e interactúa con el usuario.
+ * 
+ * Permite inciializar la búsqueda activando al agente de búsqueda padre y queda a la escucha de posibles soluciones encontradas.
+ * Muestra información relevante al usuario durante la ejecución del resto de agentes.
+ * 
+ * @author jacinto
+ *
+ */
 public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 
 	private JLabel urlLabel;
@@ -37,7 +47,19 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	private LogFile log;
 	private Pizarra pizarra;
 
+	
+	/**
+	 * Se inicializa la interfaz, la mayoría del código del constructor es código de interfaz gráfica de java swing.
+	 * La funcionalidad se encuentra en las acciones de los botones y en otros métodos.
+	 * 
+	 * 
+	 * @param log - El fichero de log con el que vamos a monitorizar a los agentes.
+	 * @param pizarra - La pizarra compartida mediante la que se comunicarán los agentes.
+	 * 
+	 */
 	public AgenteInterfaz(LogFile log, Pizarra pizarra) {
+		
+		// CODIGO DE INTERFAZ:
 		super("Practicas Multiagente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(450, 300);
@@ -45,10 +67,14 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 		definirVentana();
 		setVisible(true);
 
+		
+		// INICIALIZACIÓN DE PARÁMETROS:
 		this.log = log;
 		this.pizarra = pizarra;
 
-		// PAra actualizar el número de agentes:
+		
+		// Timer que periodicamente actualizará información referente a la ejecución:
+		// 
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override
@@ -61,6 +87,9 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 		}, 0, 60 * 10);
 	}
 
+	/*
+	 * CODIGO DE INTERFAZ GRÁFICA.
+	 */
 	public void definirVentana() {
 
 		setLayout(new GridBagLayout());
@@ -97,6 +126,7 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	}
 
 	/**
+	 * CÓDIGO DE INTERFAZ GRÁFICA:
 	 * M�todo para generar una restricci�n para el layout.
 	 * 
 	 * @param comp
@@ -121,37 +151,57 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 		return gbc;
 	}
 	
+	/**
+	 * Permite añadir texto al área de texto.
+	 * @param texto
+	 */
 	public static void escribirTextArea(String texto){
 		area.append(texto);
 	}
 
+	
+	/**
+	 * Código para controlar los eventos de la interfaz:
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		// BOTONES:
 		if (e.getSource() == empezarButtom) {
+			
+			// Comenzamos la búsqueda:
+			
 			if (!actividad) {
 				actividad = true;
 				log.reiniciar();
-
+				
+				
 				AgenteBusqueda agent;
 
+				
 				try {
-
+				
+					// Leemos la URL:
 					String pruebaURL = campoUrlText.getText();
 
 					if (pruebaURL.startsWith("www"))
 						pruebaURL = "http://" + pruebaURL;
 
+					// Instanciamos al primero de los agentes:
 					agent = new AgenteBusqueda(this, log, pizarra, "p", new URL(pruebaURL), campoKeywordText.getText().split(","));
+					
+					// Iniciamos y lanzamos al agente, a partir de ahora es independiente.
 					agent.start();
 
+					// Comenzamos a mostrar la actividad:
 					actividadLabel.setText(String.format("Agentes en activo x %s", agentesActivos));
 
 				} catch (MalformedURLException e1) {
-					// TODO: mostrar error
+					area.append("Esa URL está mal.");
 				}
 			}
 
+		// Cerramos el sistema.
 		} else if (e.getSource() == salirButtom) {
 			log.cerrar();
 			System.exit(0);
@@ -159,6 +209,10 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 
 	}
 
+	/**
+	 * MÉTODO PARA OBTENER MENSAJES DE OTROS AGENTES Y PROCESARLOS:
+	 * 
+	 */
 	@Override
 	public void mensaje(String msg) {
 		System.out.println("Fiiiiiiiin");

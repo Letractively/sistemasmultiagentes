@@ -1,0 +1,463 @@
+
+[1](Creacion)	 Agente p:	 He sido creado.
+[2](URL)	 Agente p:	 Adquiriendo código de http://www.uclm.es.
+[3](Ocurr)	 Agente p: 	 found: uni(10), 
+[4](Clonar)	 Agente p:	 Me voy a clonar 32 veces.
+[1](Creacion)	 Agente p-1:	 He sido creado.
+[2](URL)	 Agente p-1:	 Adquiriendo código de http://www.uclm.es/servicios/buscador.
+[1](Creacion)	 Agente p-15:	 He sido creado.
+[1](Creacion)	 Agente p-30:	 He sido creado.
+[1](Creacion)	 Agente p-14:	 He sido creado.
+[2](URL)	 Agente p-14:	 Adquiriendo código de http://www.uclm.es/gabinete/ver_noticias.asp?id_noticia=8572.
+[1](Creacion)	 Agente p-13:	 He sido creado.
+[1](Creacion)	 Agente p-12:	 He sido creado.
+[1](Creacion)	 Agente p-11:	 He sido creado.
+[1](Creacion)	 Agente p-10:	 He sido creado.
+[1](Creacion)	 Agente p-9:	 He sido creado.
+[1](Creacion)	 Agente p-8:	 He sido creado.
+[2](URL)	 Agente p-8:	 Adquiriendo código de https://campusvirtual.uclm.es.
+[1](Creacion)	 Agente p-7:	 He sido creado.
+[2](URL)	 Agente p-7:	 Adquiriendo código de http://www.uclm.es/fundacion/.
+[1](Creacion)	 Agente p-6:	 He sido creado.
+[2](URL)	 Agente p-6:	 Adquiriendo código de http://biblioteca.uclm.es.
+[1](Creacion)	 Agente p-5:	 He sido creado.
+[1](Creacion)	 Agente p-4:	 He sido creado.
+[2](URL)	 Agente p-4:	 Adquiriendo código de http://www.uclm.es/english/.
+[1](Creacion)	 Agente p-3:	 He sido creado.
+[2](URL)	 Agente p-3:	 Adquiriendo código de http://www.uclm.es/servicios/webmail/.
+[1](Creacion)	 Agente p-2:	 He sido creado.
+[2](URL)	 Agente p-2:	 Adquiriendo código de https://intranet.uclm.es/.
+[2](URL)	 Agente p-5:	 Adquiriendo código de http://www.uclm.es.
+[2](URL)	 Agente p-9:	 Adquiriendo código de https://www.sede.uclm.es.
+[2](URL)	 Agente p-10:	 Adquiriendo código de http://contratos.uclm.es.
+[2](URL)	 Agente p-11:	 Adquiriendo código de http://www.tiendauclm.es/.
+[2](URL)	 Agente p-12:	 Adquiriendo código de http://www.ceiuclmcytema.com.
+[2](URL)	 Agente p-13:	 Adquiriendo código de http://www.uclm.es/gabinete/ver_noticias.asp?id_noticia=8564.
+[1](Creacion)	 Agente p-32:	 He sido creado.
+[2](URL)	 Agente p-32:	 Adquiriendo código de http://www.aquiesposible.es/.
+[2](URL)	 Agente p-30:	 Adquiriendo código de http://www.uclm.es/estudiantes/vidauniversitaria/.
+[1](Creacion)	 Agente p-20:	 He sido creado.
+[1](Creacion)	 Agente p-31:	 He sido creado.
+[2](URL)	 Agente p-15:	 Adquiriendo código de http://www.uclm.es/gabinete/ver_noticias.asp?id_noticia=8573.
+[1](Creacion)	 Agente p-29:	 He sido creado.
+[2](URL)	 Agente p-29:	 Adquiriendo código de http://www.uclm.es/organos/vic_titulos/EEES/doctorados.asp.
+[1](Creacion)	 Agente p-27:	 He sido creado.
+[1](Creacion)	 Agente p-28:	 He sido creado.
+[1](Creacion)	 Agente p-26:	 He sido creado.
+[1](Creacion)	 Agente p-25:	 He sido creado.
+[1](Creacion)	 Agente p-23:	 He sido creado.
+[1](Creacion)	 Agente p-24:	 He sido creado.
+[2](URL)	 Agente p-24:	 Adquiriendo código de http://www.uclm.es/estudiantes/EncuestaDocencia.
+[1](Creacion)	 Agente p-22:	 He sido creado.
+[2](URL)	 Agente p-22:	 Adquiriendo código de http://www.uclm.es/actividades/.
+[1](Creacion)	 Agente p-21:	 He sido creado.
+[2](URL)	 Agente p-21:	 Adquiriendo código de http://www.uclm.es/actividades/evento.aspx?id_evento=3814.
+[1](Creacion)	 Agente p-19:	 He sido creado.
+[1](Creacion)	 Agente p-17:	 He sido creado.
+[1](Creacion)	 Agente p-18:	 He sido creado.
+[2](URL)	 Agente p-18:	 Adquiriendo código de http://www.uclm.es/convocatorias/convocatoria.aspx?id_convocatoria=982.
+[1](Creacion)	 Agente p-16:	 He sido creado.
+[2](URL)	 Agente p-16:	 Adquiriendo código de http://www.uclm.es/gabinete/noticias.asp.
+[2](URL)	 Agente p-17:	 Adquiriendo código de http://www.uclm.es/convocatorias/convocatoria.aspx?id_convocatoria=970.
+[2](URL)	 Agente p-19:	 Adquiriendo código de http://www.uclm.es/actividades/evento.aspx?id_evento=3720.
+[2](URL)	 Agente p-23:	 Adquiriendo código de https://www.uclm.es/organos/s_general/elecciones/rector/.
+[2](URL)	 Agente p-25:	 Adquiriendo código de http://www.uclm.es/ori/movilidad_1213.asp.
+[2](URL)	 Agente p-26:	 Adquiriendo código de http://www.uclm.es/convocatorias/convocatoria.aspx?id_convocatoria=966.
+[2](URL)	 Agente p-28:	 Adquiriendo código de http://ruidera.uclm.es.
+[2](URL)	 Agente p-27:	 Adquiriendo código de http://area.tic.uclm.es/servicios/on/.
+[2](URL)	 Agente p-31:	 Adquiriendo código de http://www.uclm.es/estudiantes/nivelidiomab1/formacionpruebanivel/.
+[2](URL)	 Agente p-20:	 Adquiriendo código de http://www.uclm.es/actividades/evento.aspx?id_evento=3796.
+[3](Ocurr)	 Agente p-32: 	 found: uni(0), 
+[4](Clonar)	 Agente p-32:	 Me voy a clonar 0 veces.
+[6](Muerte)	 Agente p-32:	 He terminado, chao.
+[3](Ocurr)	 Agente p-19: 	 found: uni(3), 
+[4](Clonar)	 Agente p-19:	 Me voy a clonar 9 veces.
+[3](Ocurr)	 Agente p-21: 	 found: uni(3), 
+[5](Visitados)	 Agente p-19:	 Solo me clono 5 veces, 5 vínculos ya estaban visitados.
+[4](Clonar)	 Agente p-21:	 Me voy a clonar 9 veces.
+[5](Visitados)	 Agente p-21:	 Solo me clono 1 veces, 9 vínculos ya estaban visitados.
+[6](Muerte)	 Agente p-21:	 He terminado, chao.
+[1](Creacion)	 Agente p-19-1:	 He sido creado.
+[2](URL)	 Agente p-19-1:	 Adquiriendo código de http://www.uclm.es/servicios/rss/actividades_rss.asp.
+[1](Creacion)	 Agente p-19-4:	 He sido creado.
+[1](Creacion)	 Agente p-19-2:	 He sido creado.
+[2](URL)	 Agente p-19-2:	 Adquiriendo código de http://validator.w3.org/check?uri=referer.
+[1](Creacion)	 Agente p-19-3:	 He sido creado.
+[2](URL)	 Agente p-19-3:	 Adquiriendo código de http://jigsaw.w3.org/css-validator/.
+[3](Ocurr)	 Agente p-29: 	 found: uni(1), 
+[4](Clonar)	 Agente p-29:	 Me voy a clonar 0 veces.
+[2](URL)	 Agente p-19-4:	 Adquiriendo código de http://www.w3.org/WAI/WCAG1AA-Conformance.
+[3](Ocurr)	 Agente p-14: 	 found: uni(12), 
+[6](Muerte)	 Agente p-29:	 He terminado, chao.
+[4](Clonar)	 Agente p-14:	 Me voy a clonar 10 veces.
+[5](Visitados)	 Agente p-14:	 Solo me clono 3 veces, 8 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-14-2:	 He sido creado.
+[1](Creacion)	 Agente p-14-1:	 He sido creado.
+[2](URL)	 Agente p-14-1:	 Adquiriendo código de http://www.uclmtv.uclm.es/.
+[2](URL)	 Agente p-14-2:	 Adquiriendo código de http://www.youtube.com/uclmvideos.
+[3](Ocurr)	 Agente p-3: 	 found: uni(3), 
+[4](Clonar)	 Agente p-3:	 Me voy a clonar 10 veces.
+[5](Visitados)	 Agente p-3:	 Solo me clono 3 veces, 8 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-3-1:	 He sido creado.
+[2](URL)	 Agente p-3-1:	 Adquiriendo código de https://web.mail.uclm.es/.
+[1](Creacion)	 Agente p-3-2:	 He sido creado.
+[2](URL)	 Agente p-3-2:	 Adquiriendo código de https://mis.tic.uclm.es/on.
+[3](Ocurr)	 Agente p-24: 	 found: uni(0), 
+[4](Clonar)	 Agente p-24:	 Me voy a clonar 1 veces.
+[1](Creacion)	 Agente p-24-1:	 He sido creado.
+[2](URL)	 Agente p-24-1:	 Adquiriendo código de https://www.uclm.es/estudiantes/EncuestaDocencia.
+[3](Ocurr)	 Agente p-15: 	 found: uni(10), 
+[4](Clonar)	 Agente p-15:	 Me voy a clonar 10 veces.
+[5](Visitados)	 Agente p-15:	 Solo me clono 1 veces, 10 vínculos ya estaban visitados.
+[6](Muerte)	 Agente p-15:	 He terminado, chao.
+[3](Ocurr)	 Agente p-1: 	 found: uni(2), 
+[4](Clonar)	 Agente p-1:	 Me voy a clonar 8 veces.
+[5](Visitados)	 Agente p-1:	 Solo me clono 1 veces, 8 vínculos ya estaban visitados.
+[6](Muerte)	 Agente p-1:	 He terminado, chao.
+[3](Ocurr)	 Agente p-27: 	 found: uni(2), 
+[4](Clonar)	 Agente p-27:	 Me voy a clonar 22 veces.
+[5](Visitados)	 Agente p-27:	 Solo me clono 20 veces, 3 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-27-1:	 He sido creado.
+[2](URL)	 Agente p-27-1:	 Adquiriendo código de http://www.uclm.es/.
+[1](Creacion)	 Agente p-27-2:	 He sido creado.
+[1](Creacion)	 Agente p-27-11:	 He sido creado.
+[2](URL)	 Agente p-27-11:	 Adquiriendo código de http://twitter.com/#!/uclmtic.
+[3](Ocurr)	 Agente p-13: 	 found: uni(13), 
+[1](Creacion)	 Agente p-27-10:	 He sido creado.
+[2](URL)	 Agente p-27-10:	 Adquiriendo código de http://www.uclm.es/servicios/avisolegal/.
+[1](Creacion)	 Agente p-27-18:	 He sido creado.
+[1](Creacion)	 Agente p-27-19:	 He sido creado.
+[2](URL)	 Agente p-27-19:	 Adquiriendo código de http://area.tic.uclm.es/incidenciasnntt/incidencias_rss.asp.
+[3](Ocurr)	 Agente p-30: 	 found: uni(15), 
+[4](Clonar)	 Agente p-30:	 Me voy a clonar 16 veces.
+[5](Visitados)	 Agente p-30:	 Solo me clono 2 veces, 15 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-27-9:	 He sido creado.
+[1](Creacion)	 Agente p-27-8:	 He sido creado.
+[2](URL)	 Agente p-27-8:	 Adquiriendo código de http://help.outlook.com/.
+[1](Creacion)	 Agente p-27-7:	 He sido creado.
+[2](URL)	 Agente p-27-7:	 Adquiriendo código de https://mis.tic.uclm.es/on/.
+[1](Creacion)	 Agente p-27-6:	 He sido creado.
+[2](URL)	 Agente p-27-6:	 Adquiriendo código de https://mis.tic.uclm.es.
+[1](Creacion)	 Agente p-27-5:	 He sido creado.
+[3](Ocurr)	 Agente p-19-1: 	 found: uni(0), 
+[1](Creacion)	 Agente p-27-4:	 He sido creado.
+[2](URL)	 Agente p-27-4:	 Adquiriendo código de http://www.uclm.es/contacto/.
+[1](Creacion)	 Agente p-27-3:	 He sido creado.
+[6](Muerte)	 Agente p-19-1:	 He terminado, chao.
+[1](Creacion)	 Agente p-30-1:	 He sido creado.
+[3](Ocurr)	 Agente p-31: 	 found: uni(9), 
+[1](Creacion)	 Agente p-27-17:	 He sido creado.
+[2](URL)	 Agente p-27-5:	 Adquiriendo código de https://catalogo.tic.uclm.es.
+[3](Ocurr)	 Agente p-16: 	 found: uni(12), 
+[2](URL)	 Agente p-27-9:	 Adquiriendo código de https://mis.tic.uclm.es/on/store.aspx.
+[2](URL)	 Agente p-27-18:	 Adquiriendo código de http://www.linkedin.com/groups?home=&gid=4060037&trk=anet_ug_hm.
+[1](Creacion)	 Agente p-27-15:	 He sido creado.
+[2](URL)	 Agente p-27-15:	 Adquiriendo código de http://on.uclm.es.
+[1](Creacion)	 Agente p-27-16:	 He sido creado.
+[2](URL)	 Agente p-27-16:	 Adquiriendo código de http://ruidera.uclm.es:8080/xmlui/handle/10578/25/browse?type=title.
+[1](Creacion)	 Agente p-27-14:	 He sido creado.
+[3](Ocurr)	 Agente p-7: 	 found: uni(3), 
+[3](Ocurr)	 Agente p-4: 	 found: uni(6), 
+[1](Creacion)	 Agente p-27-13:	 He sido creado.
+[2](URL)	 Agente p-27-13:	 Adquiriendo código de http://www.uclm.es/wifi/.
+[1](Creacion)	 Agente p-27-12:	 He sido creado.
+[2](URL)	 Agente p-27-12:	 Adquiriendo código de http://www.uclm.es/gabinete/ver_noticias.asp?id_noticia=5076.
+[3](Ocurr)	 Agente p-5: 	 found: uni(10), 
+[4](Clonar)	 Agente p-5:	 Me voy a clonar 32 veces.
+[5](Visitados)	 Agente p-5:	 Solo me clono 1 veces, 32 vínculos ya estaban visitados.
+[4](Clonar)	 Agente p-13:	 Me voy a clonar 10 veces.
+[2](URL)	 Agente p-27-2:	 Adquiriendo código de http://area.tic.uclm.es/.
+[5](Visitados)	 Agente p-13:	 Solo me clono 1 veces, 10 vínculos ya estaban visitados.
+[4](Clonar)	 Agente p-4:	 Me voy a clonar 14 veces.
+[4](Clonar)	 Agente p-7:	 Me voy a clonar 19 veces.
+[5](Visitados)	 Agente p-7:	 Solo me clono 11 veces, 9 vínculos ya estaban visitados.
+[2](URL)	 Agente p-27-14:	 Adquiriendo código de https://cau.uclm.es.
+[4](Clonar)	 Agente p-16:	 Me voy a clonar 10 veces.
+[5](Visitados)	 Agente p-16:	 Solo me clono 1 veces, 10 vínculos ya estaban visitados.
+[2](URL)	 Agente p-30-1:	 Adquiriendo código de https://www.uclm.es/estudiantes/vidauniversitaria/tablonanuncios.
+[4](Clonar)	 Agente p-31:	 Me voy a clonar 19 veces.
+[1](Creacion)	 Agente p-7-1:	 He sido creado.
+[2](URL)	 Agente p-7-1:	 Adquiriendo código de http://www.antiguosalumnos.uclm.es/.
+[1](Creacion)	 Agente p-7-2:	 He sido creado.
+[2](URL)	 Agente p-7-2:	 Adquiriendo código de http://www.uclm.es/estudiantes/nivelidiomab1/formacionpruebanivel/oxford_matricula.asp.
+[2](URL)	 Agente p-27-17:	 Adquiriendo código de http://v2.uclm.es/buscador.aspx?p=1&b=&serie=1&campus=1&centro=38.
+[2](URL)	 Agente p-27-3:	 Adquiriendo código de https://intranet.uclm.es.
+[1](Creacion)	 Agente p-7-5:	 He sido creado.
+[2](URL)	 Agente p-7-5:	 Adquiriendo código de http://www.uclm.es/fundacion/almamun/turquia/index.asp.
+[1](Creacion)	 Agente p-7-6:	 He sido creado.
+[2](URL)	 Agente p-7-6:	 Adquiriendo código de http://issuu.com/fundacionuclm/docs/revista_antiguos_alumnos_2mod?mode=window.
+[1](Creacion)	 Agente p-7-3:	 He sido creado.
+[2](URL)	 Agente p-7-3:	 Adquiriendo código de http://fundacionuclm.wordpress.com/.
+[1](Creacion)	 Agente p-7-7:	 He sido creado.
+[2](URL)	 Agente p-7-7:	 Adquiriendo código de http://www.uclm.es/fundacion/expertoCooperacion/.
+[1](Creacion)	 Agente p-7-8:	 He sido creado.
+[2](URL)	 Agente p-7-8:	 Adquiriendo código de http://boletinfundacion.wordpress.com.
+[1](Creacion)	 Agente p-7-9:	 He sido creado.
+[2](URL)	 Agente p-7-9:	 Adquiriendo código de http://www.uclm.es/fundacion/mineriaydesarrollo/.
+[1](Creacion)	 Agente p-7-4:	 He sido creado.
+[2](URL)	 Agente p-7-4:	 Adquiriendo código de http://translate.google.es.
+[5](Visitados)	 Agente p-4:	 Solo me clono 7 veces, 8 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-4-1:	 He sido creado.
+[2](URL)	 Agente p-4-1:	 Adquiriendo código de http://www.uclm.es/english/index.asp?op=6.
+[1](Creacion)	 Agente p-7-10:	 He sido creado.
+[2](URL)	 Agente p-7-10:	 Adquiriendo código de http://v2.uclm.es/buscador.aspx?p=1&b=&serie=103&campus=%20&centro=.
+[6](Muerte)	 Agente p-5:	 He terminado, chao.
+[5](Visitados)	 Agente p-31:	 Solo me clono 5 veces, 15 vínculos ya estaban visitados.
+[6](Muerte)	 Agente p-13:	 He terminado, chao.
+[6](Muerte)	 Agente p-16:	 He terminado, chao.
+[1](Creacion)	 Agente p-4-2:	 He sido creado.
+[1](Creacion)	 Agente p-31-4:	 He sido creado.
+[2](URL)	 Agente p-31-4:	 Adquiriendo código de http://www.uclm.es/actividades/inscripcion.aspx?id=26.
+[1](Creacion)	 Agente p-4-4:	 He sido creado.
+[2](URL)	 Agente p-4-4:	 Adquiriendo código de http://www.uclm.es/english/chancellor.asp.
+[3](Ocurr)	 Agente p-25: 	 found: uni(6), 
+[4](Clonar)	 Agente p-25:	 Me voy a clonar 16 veces.
+[1](Creacion)	 Agente p-4-5:	 He sido creado.
+[1](Creacion)	 Agente p-4-6:	 He sido creado.
+[2](URL)	 Agente p-4-5:	 Adquiriendo código de http://translate.google.com/translate?js=n&amp;prev=_t&amp;hl=es&amp;ie=UTF-8&amp;u=www.biblioteca.uclm.es&amp;sl=es&amp;tl=en&amp;history_state0=.
+[1](Creacion)	 Agente p-31-1:	 He sido creado.
+[2](URL)	 Agente p-4-6:	 Adquiriendo código de http://www.uclm.es/universidad/pdf/Actividades_Cifras_UCLM_2011_en.pdf.
+[2](URL)	 Agente p-31-1:	 Adquiriendo código de http://www.uclm.es/aprendeingles/.
+[1](Creacion)	 Agente p-4-3:	 He sido creado.
+[5](Visitados)	 Agente p-25:	 Solo me clono 7 veces, 10 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-31-3:	 He sido creado.
+[2](URL)	 Agente p-31-3:	 Adquiriendo código de http://www.auge.edu.es.
+[1](Creacion)	 Agente p-31-2:	 He sido creado.
+[2](URL)	 Agente p-4-2:	 Adquiriendo código de http://www.uclm.es/english/index.asp?op=7.
+[2](URL)	 Agente p-31-2:	 Adquiriendo código de http://www.fundacioncajacastillalamancha.es/.
+[2](URL)	 Agente p-4-3:	 Adquiriendo código de http://www.uclm.es/english/studies.asp.
+[1](Creacion)	 Agente p-25-1:	 He sido creado.
+[1](Creacion)	 Agente p-25-2:	 He sido creado.
+[2](URL)	 Agente p-25-1:	 Adquiriendo código de http://www.uclm.es/convocatorias/convocatoria.aspx?id_convocatoria=980.
+[1](Creacion)	 Agente p-25-3:	 He sido creado.
+[2](URL)	 Agente p-25-2:	 Adquiriendo código de http://www.uclm.es/convocatorias/convocatoria.aspx?id_convocatoria=981.
+[1](Creacion)	 Agente p-25-4:	 He sido creado.
+[2](URL)	 Agente p-25-4:	 Adquiriendo código de https://redcampus.uclm.es/solicitud_erasmus/inicio.html.
+[1](Creacion)	 Agente p-25-5:	 He sido creado.
+[2](URL)	 Agente p-25-5:	 Adquiriendo código de http://redcampus.uclm.es/solicitud_leonardoweb/inicio.html.
+[2](URL)	 Agente p-25-3:	 Adquiriendo código de http://www.uclm.es/ori/estudiantes_uclm/pruebasidiomaerasmus.asp.
+[1](Creacion)	 Agente p-25-6:	 He sido creado.
+[2](URL)	 Agente p-25-6:	 Adquiriendo código de http://v2.uclm.es/video.aspx?id_video=3b967654-6e11-4d50-bb2f-ca865277ee2d.
+[3](Ocurr)	 Agente p-28: 	 found: uni(13), 
+[4](Clonar)	 Agente p-28:	 Me voy a clonar 9 veces.
+[5](Visitados)	 Agente p-28:	 Solo me clono 9 veces, 1 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-28-1:	 He sido creado.
+[2](URL)	 Agente p-28-1:	 Adquiriendo código de http://www.biblioteca.uclm.es/Archivos/Guia_autoarchivo_RUIdeRA.pdf.
+[1](Creacion)	 Agente p-28-8:	 He sido creado.
+[2](URL)	 Agente p-28-8:	 Adquiriendo código de http://www.hp.com/.
+[1](Creacion)	 Agente p-28-7:	 He sido creado.
+[2](URL)	 Agente p-28-7:	 Adquiriendo código de http://web.mit.edu/.
+[1](Creacion)	 Agente p-28-5:	 He sido creado.
+[1](Creacion)	 Agente p-28-6:	 He sido creado.
+[2](URL)	 Agente p-28-5:	 Adquiriendo código de http://creativecommons.org/licenses/by-nc-nd/3.0/deed.es.
+[1](Creacion)	 Agente p-28-4:	 He sido creado.
+[2](URL)	 Agente p-28-4:	 Adquiriendo código de http://di.tamu.edu.
+[3](Ocurr)	 Agente p-27-4: 	 found: uni(7), 
+[6](Muerte)	 Agente p-27-4:	 He terminado, chao.
+[1](Creacion)	 Agente p-28-3:	 He sido creado.
+[3](Ocurr)	 Agente p-6: 	 found: uni(8), 
+[4](Clonar)	 Agente p-6:	 Me voy a clonar 37 veces.
+[5](Visitados)	 Agente p-6:	 Solo me clono 17 veces, 21 vínculos ya estaban visitados.
+[1](Creacion)	 Agente p-28-2:	 He sido creado.
+[2](URL)	 Agente p-28-2:	 Adquiriendo código de http://www.upo.es/biblioteca/pruebas/rebiun/REBIUNL2_Tutorial_Multimedia.htm.
+[3](Ocurr)	 Agente p-27-1: 	 found: uni(10), 
+[3](Ocurr)	 Agente p-27-10: 	 found: uni(31), 
+[2](URL)	 Agente p-28-3:	 Adquiriendo código de http://www.biblioteca.uclm.es/Archivos/Ley_de_la_Ciencia.pdf.
+[3](Ocurr)	 Agente p-27-13: 	 found: uni(5), 
+[6](Muerte)	 Agente p-27-13:	 He terminado, chao.
+[2](URL)	 Agente p-28-6:	 Adquiriendo código de http://www.dspace.org/.
+[2](URL)	 Agente p-7-4:	 URL no disponible.
+[6](Muerte)	 Agente p-7-4:	 He terminado, chao.
+[6](Muerte)	 Agente p-27-10:	 He terminado, chao.
+[6](Muerte)	 Agente p-27-1:	 He terminado, chao.
+[3](Ocurr)	 Agente p-27-2: 	 found: uni(2), 
+[6](Muerte)	 Agente p-27-2:	 He terminado, chao.
+[1](Creacion)	 Agente p-6-1:	 He sido creado.
+[2](URL)	 Agente p-6-1:	 Adquiriendo código de http://www.biblioteca.uclm.es/redes_sociales.html.
+[1](Creacion)	 Agente p-6-2:	 He sido creado.
+[2](URL)	 Agente p-6-2:	 Adquiriendo código de http://bibliotecauclm.blogspot.com/.
+[2](URL)	 Agente p-19-2:	 URL no disponible.
+[6](Muerte)	 Agente p-19-2:	 He terminado, chao.
+[1](Creacion)	 Agente p-6-3:	 He sido creado.
+[2](URL)	 Agente p-6-3:	 Adquiriendo código de https://campusvirtual.uclm.es/.
+[1](Creacion)	 Agente p-6-4:	 He sido creado.
+[2](URL)	 Agente p-6-4:	 Adquiriendo código de https://www.sede.uclm.es/.
+[1](Creacion)	 Agente p-6-5:	 He sido creado.
+[3](Ocurr)	 Agente p-7-2: 	 found: uni(1), 
+[2](URL)	 Agente p-6-5:	 Adquiriendo código de http://www.rebiun.org/.
+[6](Muerte)	 Agente p-7-2:	 He terminado, chao.
+[1](Creacion)	 Agente p-6-7:	 He sido creado.
+[2](URL)	 Agente p-6-7:	 Adquiriendo código de http://www.rebiun.org/export/sites/rebiun/pruebaconfig/documentos/ciencia20_2011.pdf.
+[1](Creacion)	 Agente p-6-8:	 He sido creado.
+[2](URL)	 Agente p-6-8:	 Adquiriendo código de http://www.rebiun.org/export/sites/Rebiun/pruebaConfig/documentos/Ciencia20_2011.pdf.
+[1](Creacion)	 Agente p-6-6:	 He sido creado.
+[2](URL)	 Agente p-6-6:	 Adquiriendo código de http://www.crue.org/.
+[3](Ocurr)	 Agente p-19-4: 	 found: uni(0), 
+[6](Muerte)	 Agente p-19-4:	 He terminado, chao.
+[3](Ocurr)	 Agente p-27-12: 	 found: uni(17), 
+[1](Creacion)	 Agente p-6-9:	 He sido creado.
+[2](URL)	 Agente p-6-9:	 Adquiriendo código de http://dialnet.unirioja.es/servlet/portadavideos.
+[6](Muerte)	 Agente p-27-12:	 He terminado, chao.
+[2](URL)	 Agente p-4-5:	 URL no disponible.
+[6](Muerte)	 Agente p-4-5:	 He terminado, chao.
+[1](Creacion)	 Agente p-6-11:	 He sido creado.
+[1](Creacion)	 Agente p-6-10:	 He sido creado.
+[2](URL)	 Agente p-6-11:	 Adquiriendo código de http://www.uclm.es/gabinete/ver_noticias.asp?id_noticia=8101.
+[2](URL)	 Agente p-6-10:	 Adquiriendo código de http://www.youtube.com/watch?v=HZPKW67DxRg.
+[1](Creacion)	 Agente p-6-12:	 He sido creado.
+[2](URL)	 Agente p-6-12:	 Adquiriendo código de http://search.ebscohost.com/.
+[1](Creacion)	 Agente p-6-13:	 He sido creado.
+[2](URL)	 Agente p-6-13:	 Adquiriendo código de https://www.reaxys.com/.
+[1](Creacion)	 Agente p-6-14:	 He sido creado.
+[2](URL)	 Agente p-6-14:	 Adquiriendo código de http://www.biblioteca.uclm.es/reaxys.html.
+[3](Ocurr)	 Agente p-7-9: 	 found: uni(4), 
+[6](Muerte)	 Agente p-7-9:	 He terminado, chao.
+[3](Ocurr)	 Agente p-4-2: 	 found: uni(10), 
+[6](Muerte)	 Agente p-4-2:	 He terminado, chao.
+[1](Creacion)	 Agente p-6-15:	 He sido creado.
+[2](URL)	 Agente p-6-15:	 Adquiriendo código de https://catalogobiblioteca.uclm.es.
+[1](Creacion)	 Agente p-6-16:	 He sido creado.
+[2](URL)	 Agente p-6-16:	 Adquiriendo código de https://catalogobiblioteca.uclm.es/cgi-bin/abnetopacmultimedia.
+[3](Ocurr)	 Agente p-4-1: 	 found: uni(17), 
+[6](Muerte)	 Agente p-4-1:	 He terminado, chao.
+[3](Ocurr)	 Agente p-27-16: 	 found: uni(9), 
+[3](Ocurr)	 Agente p-7-6: 	 found: uni(0), 
+[6](Muerte)	 Agente p-7-6:	 He terminado, chao.
+[6](Muerte)	 Agente p-27-16:	 He terminado, chao.
+[3](Ocurr)	 Agente p-25-5: 	 found: uni(0), 
+[6](Muerte)	 Agente p-25-5:	 He terminado, chao.
+[3](Ocurr)	 Agente p-27-19: 	 found: uni(0), 
+[6](Muerte)	 Agente p-27-19:	 He terminado, chao.
+[3](Ocurr)	 Agente p-4-4: 	 found: uni(4), 
+[6](Muerte)	 Agente p-4-4:	 He terminado, chao.
+[3](Ocurr)	 Agente p-20: 	 found: uni(2), 
+[4](Clonar)	 Agente p-20:	 Me voy a clonar 9 veces.
+[5](Visitados)	 Agente p-20:	 Solo me clono 1 veces, 9 vínculos ya estaban visitados.
+[6](Muerte)	 Agente p-20:	 He terminado, chao.
+[3](Ocurr)	 Agente p-31-3: 	 found: uni(0), 
+[6](Muerte)	 Agente p-31-3:	 He terminado, chao.
+[3](Ocurr)	 Agente p-4-3: 	 found: uni(4), 
+[6](Muerte)	 Agente p-4-3:	 He terminado, chao.
+[3](Ocurr)	 Agente p-7-5: 	 found: uni(8), 
+[6](Muerte)	 Agente p-7-5:	 He terminado, chao.
+[3](Ocurr)	 Agente p-6-11: 	 found: uni(10), 
+[6](Muerte)	 Agente p-6-11:	 He terminado, chao.
+[3](Ocurr)	 Agente p-6-1: 	 found: uni(1), 
+[6](Muerte)	 Agente p-6-1:	 He terminado, chao.
+[3](Ocurr)	 Agente p-7-7: 	 found: uni(3), 
+[6](Muerte)	 Agente p-7-7:	 He terminado, chao.
+[3](Ocurr)	 Agente p-25-3: 	 found: uni(6), 
+[3](Ocurr)	 Agente p-31-1: 	 found: uni(9), 
+[6](Muerte)	 Agente p-31-1:	 He terminado, chao.
+[6](Muerte)	 Agente p-25-3:	 He terminado, chao.
+[3](Ocurr)	 Agente p-6-14: 	 found: uni(1), 
+[6](Muerte)	 Agente p-6-14:	 He terminado, chao.
+[3](Ocurr)	 Agente p-19-3: 	 found: uni(0), 
+[6](Muerte)	 Agente p-19-3:	 He terminado, chao.
+[6](Muerte)	 Agente p-19:	 He terminado, chao.
+[3](Ocurr)	 Agente p-28-2: 	 found: uni(3), 
+[6](Muerte)	 Agente p-28-2:	 He terminado, chao.
+[3](Ocurr)	 Agente p-11: 	 found: uni(1), 
+[4](Clonar)	 Agente p-11:	 Me voy a clonar 93 veces.
+[5](Visitados)	 Agente p-11:	 Solo me clono 44 veces, 50 vínculos ya estaban visitados.
+[2](URL)	 Agente p-6-7:	 URL no disponible.
+[6](Muerte)	 Agente p-6-7:	 He terminado, chao.
+[3](Ocurr)	 Agente p-7-1: 	 found: uni(8), 
+[6](Muerte)	 Agente p-7-1:	 He terminado, chao.
+[1](Creacion)	 Agente p-11-1:	 He sido creado.
+[2](URL)	 Agente p-11-1:	 Adquiriendo código de http://www.tiendauclm.es/customer/account/.
+[1](Creacion)	 Agente p-11-2:	 He sido creado.
+[2](URL)	 Agente p-11-2:	 Adquiriendo código de http://www.tiendauclm.es/checkout/cart/.
+[1](Creacion)	 Agente p-11-3:	 He sido creado.
+[2](URL)	 Agente p-11-3:	 Adquiriendo código de http://www.tiendauclm.es/checkout/.
+[1](Creacion)	 Agente p-11-41:	 He sido creado.
+[2](URL)	 Agente p-11-41:	 Adquiriendo código de http://www.tiendauclm.es/catalogsearch/advanced/.
+[1](Creacion)	 Agente p-11-40:	 He sido creado.
+[2](URL)	 Agente p-11-40:	 Adquiriendo código de http://www.tiendauclm.es/catalogsearch/term/popular/.
+[3](Ocurr)	 Agente p-27-15: 	 found: uni(2), 
+[6](Muerte)	 Agente p-27-15:	 He terminado, chao.
+[1](Creacion)	 Agente p-11-42:	 He sido creado.
+[1](Creacion)	 Agente p-11-12:	 He sido creado.
+[2](URL)	 Agente p-11-42:	 Adquiriendo código de http://www.tiendauclm.es/contacts/.
+[1](Creacion)	 Agente p-11-13:	 He sido creado.
+[2](URL)	 Agente p-11-13:	 Adquiriendo código de http://www.tiendauclm.es/otros.html.
+[1](Creacion)	 Agente p-11-14:	 He sido creado.
+[1](Creacion)	 Agente p-11-15:	 He sido creado.
+[2](URL)	 Agente p-11-15:	 Adquiriendo código de http://www.tiendauclm.es/apparel/shoes/womens/anashria-womens-premier-leather-sandal.html.
+[1](Creacion)	 Agente p-11-16:	 He sido creado.
+[2](URL)	 Agente p-11-16:	 Adquiriendo código de http://tiendauclm.yourpromotionalshop.com/home.mvc.
+[1](Creacion)	 Agente p-11-17:	 He sido creado.
+[1](Creacion)	 Agente p-11-18:	 He sido creado.
+[2](URL)	 Agente p-11-18:	 Adquiriendo código de http://www.tiendauclm.es/carpetas-translucidas.html.
+[1](Creacion)	 Agente p-11-19:	 He sido creado.
+[2](URL)	 Agente p-11-19:	 Adquiriendo código de http://www.tiendauclm.es/set-fortin.html.
+[1](Creacion)	 Agente p-11-20:	 He sido creado.
+[2](URL)	 Agente p-11-20:	 Adquiriendo código de http://www.tiendauclm.es/libreta-studious-310.html.
+[1](Creacion)	 Agente p-11-21:	 He sido creado.
+[2](URL)	 Agente p-11-21:	 Adquiriendo código de http://www.tiendauclm.es/boligrafo-roller.html.
+[1](Creacion)	 Agente p-11-22:	 He sido creado.
+[2](URL)	 Agente p-11-22:	 Adquiriendo código de http://www.tiendauclm.es/libreta-noty.html.
+[1](Creacion)	 Agente p-11-23:	 He sido creado.
+[2](URL)	 Agente p-11-23:	 Adquiriendo código de http://www.tiendauclm.es/libreta-notelux.html.
+[1](Creacion)	 Agente p-11-24:	 He sido creado.
+[2](URL)	 Agente p-11-24:	 Adquiriendo código de http://www.tiendauclm.es/memoria-usb-togu-2gb-263.html.
+[1](Creacion)	 Agente p-11-25:	 He sido creado.
+[2](URL)	 Agente p-11-25:	 Adquiriendo código de http://www.tiendauclm.es/pashmina-de-seda.html.
+[1](Creacion)	 Agente p-11-26:	 He sido creado.
+[2](URL)	 Agente p-11-26:	 Adquiriendo código de http://www.tiendauclm.es/camiseta-unisex.html.
+[1](Creacion)	 Agente p-11-27:	 He sido creado.
+[2](URL)	 Agente p-11-27:	 Adquiriendo código de http://www.tiendauclm.es/sudadera-manga-montada.html.
+[1](Creacion)	 Agente p-11-28:	 He sido creado.
+[2](URL)	 Agente p-11-28:	 Adquiriendo código de http://www.tiendauclm.es/camiseta-women-only.html.
+[1](Creacion)	 Agente p-11-29:	 He sido creado.
+[2](URL)	 Agente p-11-29:	 Adquiriendo código de http://www.tiendauclm.es/puntero-laser-ballser.html.
+[1](Creacion)	 Agente p-11-30:	 He sido creado.
+[2](URL)	 Agente p-11-30:	 Adquiriendo código de http://www.tiendauclm.es/maletin-portadocumentos-expo.html.
+[1](Creacion)	 Agente p-11-31:	 He sido creado.
+[2](URL)	 Agente p-11-31:	 Adquiriendo código de http://www.tiendauclm.es/contacts.
+[1](Creacion)	 Agente p-11-32:	 He sido creado.
+[2](URL)	 Agente p-11-32:	 Adquiriendo código de http://www.tiendauclm.es/insignia-con-portaidentificador-lades.html.
+[1](Creacion)	 Agente p-11-33:	 He sido creado.
+[2](URL)	 Agente p-11-33:	 Adquiriendo código de http://www.tiendauclm.es/libreta-noty-azul.html.
+[1](Creacion)	 Agente p-11-34:	 He sido creado.
+[1](Creacion)	 Agente p-11-35:	 He sido creado.
+[2](URL)	 Agente p-11-17:	 Adquiriendo código de http://www.tiendauclm.es/memoria-usb-infocase.html.
+[1](Creacion)	 Agente p-11-36:	 He sido creado.
+[2](URL)	 Agente p-11-36:	 Adquiriendo código de http://www.tiendauclm.es/portadocumentos.html.
+[1](Creacion)	 Agente p-11-37:	 He sido creado.
+[2](URL)	 Agente p-11-37:	 Adquiriendo código de http://www.boxpromotions.com/shops/inicio.asp?pszinternal=a5ceb02b17249be7ed37fe36f768fe7b.
+[1](Creacion)	 Agente p-11-38:	 He sido creado.
+[2](URL)	 Agente p-11-38:	 Adquiriendo código de http://www.tiendauclm.es/legal.
+[1](Creacion)	 Agente p-11-39:	 He sido creado.
+[2](URL)	 Agente p-11-39:	 Adquiriendo código de http://www.tiendauclm.es/catalog/seo_sitemap/category/.
+[2](URL)	 Agente p-11-35:	 Adquiriendo código de http://www.tiendauclm.es/libreta-studious-azul.html.
+[2](URL)	 Agente p-11-34:	 Adquiriendo código de http://www.tiendauclm.es/boligrafo-roller-azul.html.
+[1](Creacion)	 Agente p-11-43:	 He sido creado.
+[2](URL)	 Agente p-11-14:	 Adquiriendo código de http://www.tiendauclm.es/congresos.html.
+[2](URL)	 Agente p-11-43:	 Adquiriendo código de http://www.tiendauclm.es/rss/.
+[2](URL)	 Agente p-11-12:	 Adquiriendo código de http://www.tiendauclm.es/ecologia.html.
+[1](Creacion)	 Agente p-11-5:	 He sido creado.
+[2](URL)	 Agente p-11-5:	 Adquiriendo código de http://www.tiendauclm.es/index.php.
+[1](Creacion)	 Agente p-11-4:	 He sido creado.
+[2](URL)	 Agente p-11-4:	 Adquiriendo código de http://www.tiendauclm.es/customer/account/login/.
+[1](Creacion)	 Agente p-11-6:	 He sido creado.
+[2](URL)	 Agente p-11-6:	 Adquiriendo código de http://www.tiendauclm.es/formas-de-pago.
+[3](Ocurr)	 Agente p-31-2: 	 found: uni(1), 
+[1](Creacion)	 Agente p-11-7:	 He sido creado.
+[2](URL)	 Agente p-11-7:	 Adquiriendo código de http://www.tiendauclm.es/tecnologia.html.
+[1](Creacion)	 Agente p-11-8:	 He sido creado.
+[2](URL)	 Agente p-11-8:	 Adquiriendo código de http://www.tiendauclm.es/complementos.html.
+[1](Creacion)	 Agente p-11-9:	 He sido creado.
+[2](URL)	 Agente p-11-9:	 Adquiriendo código de http://www.tiendauclm.es/papeleria.html.
+[1](Creacion)	 Agente p-11-10:	 He sido creado.
+[2](URL)	 Agente p-11-10:	 Adquiriendo código de http://www.tiendauclm.es/textil.html.
+[1](Creacion)	 Agente p-11-11:	 He sido creado.
+[2](URL)	 Agente p-11-11:	 Adquiriendo código de http://www.tiendauclm.es/viaje.html.
+[6](Muerte)	 Agente p-31-2:	 He terminado, chao.
+[3](Ocurr)	 Agente p-6-9: 	 found: uni(0), 
+[6](Muerte)	 Agente p-6-9:	 He terminado, chao.
+[3](Ocurr)	 Agente p-28-7: 	 found: uni(2), 
+[6](Muerte)	 Agente p-28-7:	 He terminado, chao.
+[3](Ocurr)	 Agente p-31-4: 	 found: uni(4), 
+[6](Muerte)	 Agente p-31-4:	 He terminado, chao.
+[6](Muerte)	 Agente p-31:	 He terminado, chao.
