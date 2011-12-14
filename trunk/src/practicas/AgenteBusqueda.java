@@ -27,6 +27,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private String codigo;
 	private String texto;
 	private ArrayList<String> vinculos;
+	private ArrayList<String> vinculosNuevos;
 	
 	private LogFile log;
 	private Pizarra pizarra;
@@ -44,8 +45,8 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private static String REGEX_TEXTO			= "<[^>]*>";
 	
 	// Solo temporal. Para controlar la profundidad:
-	private static int    TEMP_PROFUNDIDAD_MAXIMA = 2;
-	private static int    TEMP_MINIMO_OCURRENCIAS = 2;
+	private static int    PROFUNDIDAD_MAXIMA = 2;
+	private static int    MINIMO_OCURRENCIAS = 2;
 	
 	
 	/**
@@ -73,6 +74,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 		texto 			= "";
 		ocurrenciasKW	= new int[keywords.length];
 		vinculos		= new ArrayList<String>();
+		vinculosNuevos	= new ArrayList<String>();
 		hijos			= new ArrayList<AgenteBusqueda>();
 		
 	}
@@ -154,17 +156,34 @@ public class AgenteBusqueda extends Thread implements Agente {
 	}
 	
 	
-	
+	/**
+	 * Comprobamos mediante la pizarra que los vínculos no estaban visitados:
+	 */
+	private void compruebaVinculos() {
+		
+		// Para cada vínculo...
+		for (String v:vinculos) {
+			
+			
+			// comprobamos si dicho vínculo no ha sido antes visitado:
+			if (pizarra.quieroVisitar(v)) {
+				
+				vinculosNuevos.add(v);
+				
+			}
+		}
+	}
 	
 	
 	
 	/**
-	 * Lanza el hilo...
+	 * Lanza el hilo y ejecuta la función del agente:
 	 */
 	@Override
 	public void run() {
-			log.escribir(String.format("\n[1](Creacion)\t Agente %s:\t He sido creado.", id));
-						
+		
+			// LOG: Mensajes de Log iniciales:
+			log.escribir(String.format("\n[1](Creacion)\t Agente %s:\t He sido creado.", id));						
 			log.escribir(String.format("\n[2](URL)\t Agente %s:\t Adquiriendo código de %s.", id, url.toExternalForm()));
 			
 			try {
@@ -178,76 +197,88 @@ public class AgenteBusqueda extends Thread implements Agente {
 				// Buscamos las keywords:
 				buscaKeywords();
 				
-				// Analizamos ocurrencias:
-				// Primero un mensaje para mostrarlas:
-				String ocu = String.format("\n[3](Ocurr)\t Agente %s: \t found: ", id);			
-				for (int i = 0; i < keywords.length; i++) {				 
+				
+				// Analizamos los resultados de la busqueda:
+				
+				// LOG: Vamos generando un mensaje Log para mostrarlas:
+				String ocu = String.format("\n[3](Ocurr)\t Agente %s: \t found: ", id);		
+				
+				// Para cada keyword componemos el mensaje en sí:
+				for (int i = 0; i < keywords.length; i++) {		
+					
+					// LOG:
 					 ocu += String.format("%s(%d), ", keywords[i], ocurrenciasKW[i]);
 				
-					 // Si las ocurrencias exceden el mínimo, debemos comunicarselo a nuestro padre:
-					 if (ocurrenciasKW[i] >= TEMP_MINIMO_OCURRENCIAS)
+					 
+					 // También si las ocurrencias  para esta keyword exceden el mínimo, debemos comunicarselo a nuestro padre para que se lo vayamos enviando a la interfaz:
+					 if (ocurrenciasKW[i] >= MINIMO_OCURRENCIAS)
 						 padre.mensaje(new Mensaje("sol", new String[]{String.valueOf(keywords[i]), String.valueOf(ocurrenciasKW[i]), url.toExternalForm()}));
 				}
+				
+				// LOG: finalmente imprimimos el mensjae de log:
 				log.escribir(ocu);
+				
+				
 				
 				// Extraemos los vínculos:
 				buscaVinculos();
-	
+					
 				
-				/////////////////////////////////////////////////////////////////////////////////////////////////
-				//CLONACION DEL AGENTE:
+				// Comprobamos qué vinculos son nuevos:
+				compruebaVinculos();
 				
 				
-				// TEMPORAL: Una profundidad inicial para la búsqeuda:
-				if (id.split("-").length < TEMP_PROFUNDIDAD_MAXIMA) {
-					
-					
-					log.escribir(String.format("\n[4](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, vinculos.size()));
-					// Clonarse:
-					
-					int i = 1; // Un contador para los identificadores de los hijos:
-					
-					// PAra cada vínculo...
-					for (String v:vinculos) {
-						
-						// comprobamos si dicho vínculo no ha sido antes visitado:
-						if (pizarra.quieroVisitar(v)) {
-							try {
-								// En cuyo caso creamos un nuevo agente hijo, concatenando nuestro id al que le toque:
-								hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
-								i++;
-								
-							} catch (MalformedURLException e) {
-								e.printStackTrace();
-							}
-							
-						}
-					}
-					
-					// Si no hemos desplegado todos los hijos mostramos el factor de ramificación real:
-					if (i-1 != vinculos.size()) {
-						log.escribir(String.format("\n[5](Visitados)\t Agente %s:\t Solo me clono %d veces, %d vínculos ya estaban visitados.", id, i, vinculos.size()-i+1));
-					}
-					
-					// Lazamos nuestros hijos:
-					for (AgenteBusqueda a:hijos)
-						a.start();
-							
-					// Nos quedaremos activos hasta que nuestros hijos hayan terminado, para poder pasar mensajes:
-					hijosActivos = hijos.size();
-					// Pasamos el control a un monitor interno para controlar los hijos que nos queden:
-					seguir();
+				// LOG: Mensaje de log para mosrar el número de vínculos y cuales son nuevos.
+				log.escribir(String.format("\n[4](Vinculos)\t Agente %s:\t Tengo %d vinculos de los cuales %d ya estan visitados.", id, vinculos.size(), vinculos.size()-vinculosNuevos.size()));
+
+				
+				
+				
+				///////////////////////////////////////////////
+				//
+				// A continuación activar el método para generar la descendencia deseado:
+				
+				generarDescendenciaTrivial();
+				
+				// generarDescendencia1();
+				
+				
+				
+				
+				// LOG: Mensaje de log para indicar el volumen de la replicacion de este agente:
+				if (hijos.isEmpty()) {
+					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t No me voy a clonar.", id));
+				} else {
+					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, hijos.size()));
 				}
-					
+				
+				
+				// Lanzamos nuestros hijos:
+				for (AgenteBusqueda a:hijos)
+					a.start();
+						
+	
+				// Final del agente:
+						
+				// Nos quedaremos activos hasta que nuestros hijos hayan terminado, para poder escuchar y pasar mensajes:
+				hijosActivos = hijos.size();
+													
+				// Pasamos el control a un monitor interno para controlar los hijos que nos queden:
+				seguir();
+				
 			
+			// Control de excepciones para el caso de un mal uso del fichero:
 			} catch (IOException e1) {
-				// Si no podemos descargar el código mostramos este error:
+				// LOG: Si no podemos descargar el código mostramos este error:
 				log.escribir(String.format("\n[2](URL)\t Agente %s:\t URL no disponible.", id));
 			}	
 			
+			// Llegados a este punto el agente muere:
 			
-			// Llegados a este punto el agente muere, lo escribe en el log y antes envia un mensaje a su padre para comunicarselo:
+			// LOG: lo escribe en el log y 
 			log.escribir(String.format("\n[6](Muerte)\t Agente %s:\t He terminado, chao.", id));
+			
+			// Antes envia un mensaje a su padre para comunicarselo:
 		    padre.mensaje(new Mensaje("fin", null));
 	}
 
@@ -258,7 +289,8 @@ public class AgenteBusqueda extends Thread implements Agente {
 	 */
 	
 	/**
-	 * Se espera a que todos sus hijos hayan terminado y mientras queda a la espera:
+	 * Este método se utiliza para que el agente no muera hasta que todos sus hijos hayan terminado.
+	 * Se espera a que todos sus hijos hayan terminado y mientras queda a la espera.
 	 */
 	public synchronized void seguir() {
 		while (hijosActivos != 0) {
@@ -280,14 +312,91 @@ public class AgenteBusqueda extends Thread implements Agente {
 	public synchronized void mensaje(Mensaje msg) {
 		
 		
-		// comprobamos que el código del mensaje nos sea reconocido, en caso contrario lo ignoramos:
+		// Comprobamos que el código del mensaje nos sea reconocido, en caso contrario lo ignoramos:
+		
+		// Mensajes de fin para comunicarle a tu padre que has terminado y no tienes descendencia:
 		if (msg.codigo.equals("fin")) {
 			hijosActivos--;			
 			notify();
 			
+			
+		// Mensaje para pasar una solución encontrada (o redirigida por tu hijo) hacia arriba:
 		} else if (msg.codigo.equals("sol")) {
 			padre.mensaje(msg);
 		}
 
 	}
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//		AQUÍ PODEMOS PONER LOS MÉTODOS DE GENERAR LA DESCENDENCIA QUE VAYAMOS HACIENDO:
+		//
+		//
+		//
+		
+	/*
+	 * Los metodos para generar descendencia deben tomar la lista de vinculosNuevos y a partir de los mismos y del resto de atributos del agente
+	 * que se consideren relevantes introducir nuevos agentes en la lista "hijos", luego el programa se encargará de lanzar dichos hijos.
+	 * 
+	 * Se ruega que se comente que hace cada metodo y que si indica si lleva a cabo una búsqueda infinita.
+	 * 
+	 */
+	
+	
+	/**
+	 * Genera la descendencia incondicionalmente.
+	 * 
+	 * 
+	 */
+	private void generarDescendenciaTrivial() {
+
+		// Un contador para ir construyendo los identificadores de los hijos a partir del nuestro.
+		int i = 1; 
+		
+		// Para cada vínculo nuevo en la lista creamos un hijo:
+		for (String v:vinculosNuevos) {
+
+			try {
+				// Creamos un nuevo hijo:
+				hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
+				i++;
+				
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}	
+		}
+	}
+	
+	
+	/**
+	 * Genera descendencia acotando la profundidad del árbol a la constante PROFUNDIDAD_MAXIMA
+	 * Cuando un agente se encuentr en el nivel d = PROFUNDIDAD_MAXIMA no generará ninguna descendencia.
+	 * 
+	 */
+	private void generarDescendencia1() {
+		
+	
+		if (id.split("-").length < PROFUNDIDAD_MAXIMA) {
+	
+			int i = 1; // Un contador para los identificadores de los hijos:
+			
+			// Para cada vínculo nuevo creamos un hijo:
+			for (String v:vinculosNuevos) {
+
+				try {
+					// En cuyo caso creamos un nuevo agente hijo, concatenando nuestro id al que le toque:
+					hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
+					i++;
+					
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}	
+			}
+		}
+	}
+
 }
+
