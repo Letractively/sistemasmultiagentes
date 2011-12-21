@@ -37,6 +37,8 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private Agente padre;
 	private ArrayList<AgenteBusqueda> hijos;
 	
+	private double temperatura;
+	
 	
 	// Expresiones Regulares (utilizadas para procesar el código):
 	
@@ -44,13 +46,18 @@ public class AgenteBusqueda extends Thread implements Agente {
 	private static String REGEX_VINCULOS 		= "\"http(s?)://[^\"']*\"";
 	private static String REGEX_TEXTO			= "<[^>]*>";
 	
-	// Solo temporal. Para controlar la profundidad:
+	
+	// Constantes:
 	private static int    PROFUNDIDAD_MAXIMA = 2;
 	private static int    MINIMO_OCURRENCIAS = 2;
 	
+	// De TEMPERATURA
+	private static double TEMP_MAX = 2;
+	private static double TEMP_CTE_ENFR = 0.5;
+	private static double TEMP_CTE_CAL =  1;
 	
 	/**
-	 * Constructor para incialziar una gente:
+	 * Constructor para inicializiar un agente:
 	 * 
 	 * @param p - El padre de dicho agente.
 	 * @param m - El fichero de log para escribir sus mensajes.
@@ -59,7 +66,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 	 * @param u - La url que se le proporciona para buscar.
 	 * @param kw - La lista de keywords.
 	 */
-	public AgenteBusqueda(Agente p, LogFile m, Pizarra pi, String i, URL u, String[] kw) {
+	public AgenteBusqueda(Agente p, LogFile m, Pizarra pi, String i, URL u, String[] kw, double tmp) {
 		
 		// Parametros:
 		id			= i;
@@ -68,6 +75,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 		log			= m;
 		pizarra 	= pi;
 		padre		= p;
+		temperatura = tmp;
 		
 		// Solo incialización:
 		codigo 			= "";
@@ -210,10 +218,19 @@ public class AgenteBusqueda extends Thread implements Agente {
 					 ocu += String.format("%s(%d), ", keywords[i], ocurrenciasKW[i]);
 				
 					 
-					 // También si las ocurrencias  para esta keyword exceden el mínimo, debemos comunicarselo a nuestro padre para que se lo vayamos enviando a la interfaz:
+					 // Solución encontrada: También si las ocurrencias  para esta keyword exceden el mínimo, debemos comunicarselo a nuestro padre para que se lo vayamos enviando a la interfaz:
 					 if (ocurrenciasKW[i] >= MINIMO_OCURRENCIAS)
 						 padre.mensaje(new Mensaje("sol", new String[]{String.valueOf(keywords[i]), String.valueOf(ocurrenciasKW[i]), url.toExternalForm()}));
 				}
+				
+				// Si hay alguna ocurrencia nos calentamos
+				boolean heat = false;
+				for (int i:ocurrenciasKW) {
+					if (i >0)
+						heat = true;
+				}
+				if (heat)
+					temperatura = Math.max(TEMP_MAX, temperatura + TEMP_CTE_CAL);
 				
 				// LOG: finalmente imprimimos el mensjae de log:
 				log.escribir(ocu);
@@ -238,7 +255,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 				//
 				// A continuación activar el método para generar la descendencia deseado:
 				
-				generarDescendenciaTrivial();
+				generarDescendenciaTemp();
 				
 				// generarDescendencia1();
 				
@@ -247,9 +264,9 @@ public class AgenteBusqueda extends Thread implements Agente {
 				
 				// LOG: Mensaje de log para indicar el volumen de la replicacion de este agente:
 				if (hijos.isEmpty()) {
-					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t No me voy a clonar.", id));
+					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t No me voy a clonar. Temperatura = %f.", id, temperatura));
 				} else {
-					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t Me voy a clonar %d veces.", id, hijos.size()));
+					log.escribir(String.format("\n[5](Clonar)\t Agente %s:\t Me voy a clonar %d veces. Temperatura = %f.", id, hijos.size(), temperatura));
 				}
 				
 				
@@ -361,7 +378,7 @@ public class AgenteBusqueda extends Thread implements Agente {
 
 			try {
 				// Creamos un nuevo hijo:
-				hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
+				hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords, 0));
 				i++;
 				
 			} catch (MalformedURLException e) {
@@ -388,7 +405,29 @@ public class AgenteBusqueda extends Thread implements Agente {
 
 				try {
 					// En cuyo caso creamos un nuevo agente hijo, concatenando nuestro id al que le toque:
-					hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords));
+					hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords, 0));
+					i++;
+					
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}	
+			}
+		}
+	}
+	
+	private void generarDescendenciaTemp() {
+		
+		
+		if (!(temperatura == 0)) {
+	
+			int i = 1; // Un contador para los identificadores de los hijos:
+			
+			// Para cada vínculo nuevo creamos un hijo:
+			for (String v:vinculosNuevos) {
+
+				try {
+					// En cuyo caso creamos un nuevo agente hijo, concatenando nuestro id al que le toque:
+					hijos.add(new AgenteBusqueda(this, log, pizarra, id+"-"+String.valueOf(i), new URL(v), keywords, Math.max(0, temperatura-TEMP_CTE_ENFR)));
 					i++;
 					
 				} catch (MalformedURLException e) {

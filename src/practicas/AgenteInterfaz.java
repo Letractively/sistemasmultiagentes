@@ -47,6 +47,7 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 	private LogFile log;
 	private Pizarra pizarra;
 
+	private double TEMP_INICIAL = 1;
 	
 	/**
 	 * Se inicializa la interfaz, la mayoría del código del constructor es código de interfaz gráfica de java swing.
@@ -188,7 +189,7 @@ public class AgenteInterfaz extends JFrame implements Agente, ActionListener {
 						pruebaURL = "http://" + pruebaURL;
 
 					// Instanciamos al primero de los agentes:
-					agent = new AgenteBusqueda(this, log, pizarra, "p", new URL(pruebaURL), campoKeywordText.getText().split(","));
+					agent = new AgenteBusqueda(this, log, pizarra, "p", new URL(pruebaURL), campoKeywordText.getText().split(","), TEMP_INICIAL);
 					
 					// Iniciamos y lanzamos al agente, a partir de ahora es independiente.
 					agent.start();
