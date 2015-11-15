@@ -1,0 +1,1 @@
+El proyecto consiste en crear un sistema multiagente que se encargue de buscar palabras claves a través de páginas webs, para ello utilizaremos el paradigma de un sistema multiagente y sus metodologías.
